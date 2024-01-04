@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restro</title>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    * {box-sizing: border-box;}
+
+    body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    
+    }
+
+    .topnav {
+    overflow: hidden;
+    background-color: #e9e9e9;
+    /* position: fixed; */
+    }
+
+    .topnav a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    }
+
+    .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+    }
+
+    .topnav a.active {
+    background-color: #2196F3;
+    color: white;
+    }
+
+    .topnav .search-container {
+    float: right;
+    }
+
+    .topnav input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+    }
+
+    .topnav .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    }
+
+    .topnav .search-container button:hover {
+    background: #ccc;
+    }
+
+    @media screen and (max-width: 600px) {
+    .topnav .search-container {
+        float: none;
+    }
+    .topnav a, .topnav input[type=text], .topnav .search-container button {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+    }
+    .topnav input[type=text] {
+        border: 1px solid #ccc;  
+    }
+    }
+
+    .results{
+        width: 100%;
+        overflow: scroll;
+        /* height: 100%; */
+        /* display: flex; */
+    }
+
+    .item{
+        /* border: 1px solid; */
+        /* display: flex; */
+        text-align: center;
+        padding: 10px;
+        box-shadow: 1px 6px 20px #7f7d7d;
+        margin: 1%;
+        border-radius: 20px;
+        padding: 1%;
+    }
+
+</style>
+<body>
+
+
+
+    <div class="topnav">
+        <a class="active" href="/">Home</a>
+        <a href="/admin">Admin</a>
+        <a href="https://github.com/anky209e/restro">GitHub</a>
+        <div class="search-container">
+          <form>
+            <input type="text" placeholder="{{query}}" name="q">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+    </div>
+    <div class="results">
+        {% for dish in dishes %}
+        <div class="item">
+            <h3>{{dish.name}}</h3>
+            <p>Restaurant: {{dish.restaurant}}</p>
+            <p>Rating: {{dish.restaurant.rating}}/5</p>
+            <p>₹{{dish.price}}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
